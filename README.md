@@ -108,3 +108,6 @@ HealthyPlate is made to help people learn more about healthy eating. The informa
 
 
 **HealthyPlate — Learn better. Eat balanced. Start simple.**
+
+## 📄 License
+This project is licensed under the MIT License.
