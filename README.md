@@ -19,7 +19,7 @@ The project focuses on **balance, variety, education, and realistic habits**—n
 
 ## Demo Walkthrough
 
-<img src="static/images/demo.gif" width=800>
+<img src="static/images/demo.gif" width=500>
 
 ## ⚙️ Tech stack
 * Python 3 — Handles application logic and content management.
