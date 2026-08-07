@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Page not found | HealthyPlate{% endblock %}
+{% block content %}<section class="section shell empty-state not-found"><span>🥬</span><p class="eyebrow">404 error</p><h1>That page isn’t on the menu.</h1><p>The link may be old, or the page may have moved.</p><a class="button" href="{{ url_for('homepage') }}">Return home</a></section>{% endblock %}

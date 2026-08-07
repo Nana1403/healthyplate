@@ -1,0 +1,105 @@
+{# ============================================
+  TEMPLATE: Meal Idea Assistant Page
+  ============================================ #}
+
+{% extends "base.html" %}
+
+{% block title %}Meal Idea Assistant | HealthyPlate{% endblock %}
+
+{% block content %}
+
+{# ============================================
+  PAGE HERO / INTRODUCTION
+  ============================================ #}
+
+<section class="page-hero assistant-hero">
+ <div class="shell narrow">
+   <p class="eyebrow">HealthyPlate assistant</p>
+   <h1>Turn what you have into a balanced meal.</h1>
+   <p class="lede">
+     Share a few ingredients, your budget, or the kind of meal you need. 
+     Keep personal medical information private.
+   </p>
+ </div>
+</section>
+
+
+{# ============================================
+  ASSISTANT LAYOUT (Form + Response)
+  ============================================ #}
+
+<section class="section shell assistant-layout">
+ 
+ {# ---- Input Form ---- #}
+ <div class="assistant-form-card">
+   
+   <h2>What can we help you make?</h2>
+   <p>Example: "I have black beans, rice, frozen corn, and 20 minutes."</p>
+   
+   {# --- Flash Messages --- #}
+   {% with messages = get_flashed_messages(with_categories=true) %}
+     {% for category, message in messages %}
+       <div class="flash {{ category }}" role="alert">{{ message }}</div>
+     {% endfor %}
+   {% endwith %}
+   
+   {# --- Form --- #}
+   <form method="post">
+     <label for="user">Your question</label>
+     <textarea 
+       id="user" 
+       name="user" 
+       rows="5" 
+       maxlength="600" 
+       placeholder="Tell us what foods you have or what kind of meal you need…"
+     >{{ user_question }}</textarea>
+     
+     <div class="form-footer">
+       <small>General food education only · 600 characters max</small>
+       <button class="button" type="submit">
+         Get an idea <span aria-hidden="true">→</span>
+       </button>
+     </div>
+   </form>
+   
+ </div>
+ 
+ {# ---- Response Display ---- #}
+ <aside class="assistant-answer" aria-live="polite">
+   <span class="assistant-avatar">🥗</span>
+   <div>
+     <p class="eyebrow">HealthyPlate suggests</p>
+     
+     {% if assistant %}
+       <div class="answer-text">{{ assistant }}</div>
+     {% else %}
+       <h2>Your meal idea will appear here.</h2>
+       <p>
+         For useful results, mention ingredients, time, dietary preferences, 
+         and available cooking tools.
+       </p>
+     {% endif %}
+     
+   </div>
+ </aside>
+ 
+</section>
+
+
+{# ============================================
+  MEDICAL DISCLAIMER
+  ============================================ #}
+
+<aside class="shell disclaimer compact-disclaimer">
+ <span>⚕️</span>
+ <div>
+   <h2>Not medical advice</h2>
+   <p>
+     The assistant gives general educational ideas. For allergies, medical conditions, 
+     pregnancy, eating disorders, or individualized nutrition advice, consult a 
+     qualified healthcare professional.
+   </p>
+ </div>
+</aside>
+
+{% endblock %}

@@ -1,0 +1,1281 @@
+/* ============================================
+   ROOT VARIABLES
+   ============================================ */
+
+   :root {
+    --ink: #173d32;
+    --muted: #52685f;
+    --forest: #245f4d;
+    --forest-dark: #16483a;
+    --sage: #cfe0c8;
+    --mint: #eaf4e6;
+    --cream: #fbf7eb;
+    --peach: #f7d3b5;
+    --yellow: #f4e5a5;
+    --white: #fffefa;
+    --line: #dbe4d8;
+    --shadow: 0 18px 48px rgba(31, 74, 59, .1);
+    --radius: 24px;
+  }
+  
+  
+  /* ============================================
+     RESET & BASE STYLES
+     ============================================ */
+  
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  
+  body {
+    margin: 0;
+    background: var(--white);
+    color: var(--ink);
+    font-family: "DM Sans", sans-serif;
+    line-height: 1.65;
+  }
+  
+  h1, h2, h3, p { margin-top: 0; }
+  h1, h2 { font-family: "Fraunces", Georgia, serif; line-height: 1.08; letter-spacing: -.025em; }
+  h1 { font-size: clamp(2.8rem, 7vw, 5.7rem); }
+  h2 { font-size: clamp(2rem, 4vw, 3.35rem); }
+  h3 { font-size: 1.2rem; line-height: 1.25; }
+  
+  a { color: inherit; }
+  img { max-width: 100%; }
+  button, input, textarea, select { font: inherit; }
+  
+  
+  /* ============================================
+     LAYOUT CONTAINERS
+     ============================================ */
+  
+  .shell {
+    width: min(1160px, calc(100% - 40px));
+    margin-inline: auto;
+  }
+  
+  .narrow {
+    max-width: 810px;
+    text-align: center;
+  }
+  
+  .section {
+    padding-block: clamp(70px, 9vw, 120px);
+  }
+  
+  
+  /* ============================================
+     ACCESSIBILITY
+     ============================================ */
+  
+  .skip-link {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: 20;
+    background: var(--forest);
+    color: white;
+    padding: 10px 16px;
+    transform: translateY(-150%);
+  }
+  
+  .skip-link:focus { transform: none; }
+  
+  
+  /* ============================================
+     HEADER & NAVIGATION
+     ============================================ */
+  
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid rgba(219, 228, 216, .8);
+    background: rgba(255, 254, 250, .94);
+    backdrop-filter: blur(12px);
+  }
+  
+  .nav {
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: "Fraunces", serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  
+  .brand-mark {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--mint);
+  }
+  
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+  }
+  
+  .nav-links > a:not(.button) {
+    font-size: .95rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .nav-links > a:not(.button):hover {
+    color: var(--forest);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+  
+  .menu-button {
+    display: none;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: transparent;
+    padding: 8px 12px;
+    color: var(--ink);
+    font-weight: 700;
+  }
+  
+  
+  /* ============================================
+     BUTTONS & LINKS
+     ============================================ */
+  
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 50px;
+    padding: 12px 22px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--forest);
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .2s, background .2s;
+  }
+  
+  .button:hover {
+    transform: translateY(-2px);
+    background: var(--forest-dark);
+  }
+  
+  .button-small {
+    min-height: 42px;
+    padding: 8px 17px;
+    font-size: .9rem;
+  }
+  
+  .button-light {
+    background: var(--cream);
+    color: var(--forest-dark);
+  }
+  
+  .button-light:hover { background: white; }
+  
+  .text-link {
+    color: var(--forest);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  
+  .text-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+  
+  .button-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  
+  
+  /* ============================================
+     TYPOGRAPHY HELPERS
+     ============================================ */
+  
+  .eyebrow {
+    margin-bottom: 12px;
+    color: var(--forest);
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+  }
+  
+  .lede {
+    color: var(--muted);
+    font-size: clamp(1.06rem, 2vw, 1.3rem);
+    line-height: 1.65;
+  }
+  
+  
+  /* ============================================
+     HERO SECTION
+     ============================================ */
+  
+  .hero {
+    overflow: hidden;
+    background: radial-gradient(circle at 80% 20%, #f8eab8 0 13%, transparent 35%),
+                linear-gradient(135deg, var(--cream), #edf4e4);
+  }
+  
+  .hero-grid {
+    min-height: 720px;
+    display: grid;
+    grid-template-columns: 1.02fr .98fr;
+    align-items: center;
+    gap: 50px;
+    padding-block: 70px;
+  }
+  
+  .hero-copy h1 {
+    max-width: 700px;
+    margin-bottom: 24px;
+  }
+  
+  .hero-copy h1 em {
+    color: var(--forest);
+    font-style: italic;
+  }
+  
+  .hero-copy .lede { max-width: 620px; }
+  
+  .trust-list {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin: 35px 0 0;
+    padding: 0;
+    color: var(--muted);
+    font-size: .9rem;
+    list-style: none;
+  }
+  
+  .trust-list li::before {
+    content: "✓";
+    margin-right: 7px;
+    color: var(--forest);
+    font-weight: 800;
+  }
+  
+  
+  /* ============================================
+     HERO VISUAL (Plate Illustration)
+     ============================================ */
+  
+  .hero-visual {
+    position: relative;
+    min-height: 520px;
+    display: grid;
+    place-items: center;
+  }
+  
+  .plate {
+    width: min(440px, 85vw);
+    aspect-ratio: 1;
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    gap: 6px;
+    padding: 28px;
+    border: 18px solid #fff;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 28px 70px rgba(23, 61, 50, .18);
+    transform: rotate(-4deg);
+    overflow: hidden;
+  }
+  
+  .plate > span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 4.3rem;
+  }
+  
+  .plate small {
+    font-size: .78rem;
+    font-weight: 800;
+  }
+  
+  .plate-greens {
+    grid-row: span 2;
+    background: #b8d8aa;
+    border-radius: 100% 14px 14px 100%;
+  }
+  
+  .plate-protein {
+    background: var(--peach);
+    border-radius: 14px 100% 14px 14px;
+  }
+  
+  .plate-grain {
+    background: var(--yellow);
+    border-radius: 14px 14px 100% 14px;
+  }
+  
+  .float-card {
+    position: absolute;
+    padding: 12px 16px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(255,255,255,.92);
+    box-shadow: var(--shadow);
+    font-size: .84rem;
+    font-weight: 700;
+  }
+  
+  .float-one { top: 11%; right: -2%; }
+  .float-two { bottom: 11%; left: -2%; }
+  
+  
+  /* ============================================
+     SECTION HEADINGS
+     ============================================ */
+  
+  .section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 50px;
+    margin-bottom: 42px;
+  }
+  
+  .section-heading h2 {
+    margin-bottom: 0;
+    max-width: 650px;
+  }
+  
+  .section-heading > p {
+    max-width: 430px;
+    margin-bottom: 3px;
+    color: var(--muted);
+  }
+  
+  
+  /* ============================================
+     STEP GRID (Your Starting Point)
+     ============================================ */
+  
+  .step-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  
+  .step-card {
+    position: relative;
+    min-height: 330px;
+    padding: 25px;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  
+  .step-card > span {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    color: rgba(23,61,50,.5);
+    font-size: .8rem;
+    font-weight: 800;
+  }
+  
+  .step-card .card-icon {
+    margin: 30px 0 45px;
+    font-size: 3.3rem;
+  }
+  
+  .step-card p {
+    margin-bottom: 0;
+    color: #36594e;
+  }
+  
+  .peach { background: #fae2d0; }
+  .yellow { background: #f7ebba; }
+  .green { background: #dcebd4; }
+  .sage { background: #c8dfd1; }
+  
+  
+  /* ============================================
+     TINTED BACKGROUND SECTION
+     ============================================ */
+  
+  .tint-section { background: var(--cream); }
+  
+  
+  /* ============================================
+     RECIPE GRID & CARDS
+     ============================================ */
+  
+  .recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  
+  .recipe-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: white;
+    overflow: hidden;
+    transition: transform .2s, box-shadow .2s;
+  }
+  
+  .recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+  }
+  
+  .recipe-art {
+    min-height: 225px;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+  }
+  
+  .recipe-art span {
+    filter: drop-shadow(0 12px 10px rgba(23,61,50,.13));
+    font-size: 6rem;
+    transition: transform .25s;
+  }
+  
+  .recipe-card:hover .recipe-art span {
+    transform: scale(1.08) rotate(-3deg);
+  }
+  
+  .art-1 { background: #ecdcba; }
+  .art-2 { background: #cddfbd; }
+  .art-3 { background: #edd0b5; }
+  
+  .recipe-body { padding: 24px; }
+  
+  .recipe-body h2,
+  .recipe-body h3 {
+    font-family: "Fraunces", serif;
+    font-size: 1.45rem;
+  }
+  
+  .recipe-body h2 a,
+  .recipe-body h3 a { text-decoration: none; }
+  
+  .recipe-body p { color: var(--muted); }
+  
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 11px;
+    color: var(--forest);
+    font-size: .73rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  
+  .tag-row {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+  }
+  
+  .tag-row span {
+    padding: 4px 9px;
+    border-radius: 999px;
+    background: var(--mint);
+    color: var(--forest);
+    font-size: .72rem;
+    font-weight: 700;
+  }
+  
+  
+  /* ============================================
+     SPLIT FEATURE (Budget Section)
+     ============================================ */
+  
+  .split-feature {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 22px;
+  }
+  
+  .feature-panel {
+    padding: clamp(35px, 6vw, 70px);
+    border-radius: var(--radius);
+    background: var(--forest);
+    color: white;
+  }
+  
+  .feature-panel .eyebrow { color: #d4e8d2; }
+  .feature-panel p:not(.eyebrow) {
+    max-width: 600px;
+    color: #e4efe9;
+  }
+  
+  .mini-list { padding: 10px 18px; }
+  
+  .mini-list > div {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    column-gap: 12px;
+    padding: 20px 4px;
+    border-bottom: 1px solid var(--line);
+  }
+  
+  .mini-list span {
+    grid-row: span 2;
+    font-size: 2rem;
+  }
+  
+  .mini-list h3,
+  .mini-list p { margin-bottom: 3px; }
+  .mini-list p { color: var(--muted); }
+  
+  
+  /* ============================================
+     ASSISTANT CALL-TO-ACTION
+     ============================================ */
+  
+  .assistant-cta {
+    padding-block: 75px;
+    background: var(--yellow);
+  }
+  
+  .cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  
+  .cta-inner h2 { margin-bottom: 10px; }
+  .cta-inner p { margin-bottom: 0; }
+  
+  
+  /* ============================================
+     PAGE HERO (General)
+     ============================================ */
+  
+  .page-hero {
+    padding: 115px 0 100px;
+    background: linear-gradient(140deg, var(--cream), var(--mint));
+  }
+  
+  .page-hero.compact { padding-block: 85px; }
+  
+  .page-hero h1 {
+    font-size: clamp(2.7rem, 6vw, 4.8rem);
+    margin-bottom: 20px;
+  }
+  
+  .page-hero .lede { margin-bottom: 0; }
+  
+  
+  /* ============================================
+     ARTICLES GRID (Learn Page)
+     ============================================ */
+  
+  .article-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .article-card {
+    padding: 30px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: white;
+  }
+  
+  .article-card:nth-child(2n) { background: var(--cream); }
+  
+  .article-icon {
+    display: block;
+    margin-bottom: 32px;
+    font-size: 2.5rem;
+  }
+  
+  .article-card h2 { font-size: 1.55rem; }
+  .article-card p:last-child { color: var(--muted); }
+  
+  
+  /* ============================================
+     NUTRIENT GRID (Learn Page)
+     ============================================ */
+  
+  .nutrient-grid {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 80px;
+  }
+  
+  .nutrient-grid dl { margin: 0; }
+  
+  .nutrient-grid dl div {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #d9ddcd;
+  }
+  
+  .nutrient-grid dt { font-weight: 800; }
+  .nutrient-grid dd {
+    margin: 0;
+    color: var(--muted);
+  }
+  
+  
+  /* ============================================
+     DISCLAIMER
+     ============================================ */
+  
+  .disclaimer {
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+    padding: 28px;
+    margin-bottom: 90px;
+    border: 1px solid #e6d49a;
+    border-radius: 18px;
+    background: #fff8dc;
+  }
+  
+  .disclaimer > span { font-size: 1.8rem; }
+  
+  .disclaimer h2 {
+    margin-bottom: 6px;
+    font-family: inherit;
+    font-size: 1.1rem;
+  }
+  
+  .disclaimer p {
+    margin-bottom: 0;
+    color: var(--muted);
+  }
+  
+  
+  /* ============================================
+     FILTER BAR (Recipes Page)
+     ============================================ */
+  
+  .filter-bar {
+    display: grid;
+    grid-template-columns: 1fr 240px auto;
+    align-items: end;
+    gap: 14px;
+    margin-bottom: 18px;
+    padding: 22px;
+    border-radius: 18px;
+    background: var(--mint);
+  }
+  
+  .filter-bar label > span,
+  .assistant-form-card label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: .82rem;
+    font-weight: 800;
+  }
+  
+  input[type="search"],
+  select,
+  textarea {
+    width: 100%;
+    border: 1px solid #bdcdbf;
+    border-radius: 12px;
+    background: white;
+    color: var(--ink);
+    padding: 13px 14px;
+  }
+  
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:focus-visible,
+  a:focus-visible {
+    outline: 3px solid #e3bd45;
+    outline-offset: 2px;
+  }
+  
+  .results-count {
+    margin: 0 0 26px;
+    color: var(--muted);
+  }
+  
+  .empty-state {
+    padding: 80px 20px;
+    text-align: center;
+  }
+  
+  .empty-state > span {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 4rem;
+  }
+  
+  .empty-state h1,
+  .empty-state h2 { margin-bottom: 12px; }
+  
+  .not-found { min-height: 560px; }
+  
+  
+  /* ============================================
+     RECIPE DETAIL PAGE
+     ============================================ */
+  
+  .recipe-hero {
+    padding-block: 70px;
+    background: var(--cream);
+  }
+  
+  .recipe-hero-grid {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 65px;
+    align-items: center;
+  }
+  
+  .recipe-big-art {
+    min-height: 440px;
+    display: grid;
+    place-items: center;
+    border-radius: 50% 42% 48% 40%;
+    background: var(--sage);
+  }
+  
+  .recipe-big-art span { font-size: 10rem; }
+  
+  .recipe-hero h1 {
+    font-size: clamp(2.7rem, 6vw, 4.7rem);
+    margin-bottom: 20px;
+  }
+  
+  .recipe-facts {
+    display: flex;
+    gap: 32px;
+    margin: 28px 0;
+  }
+  
+  .recipe-facts span {
+    display: flex;
+    flex-direction: column;
+    color: var(--muted);
+  }
+  
+  .recipe-facts strong {
+    color: var(--ink);
+    font-size: .8rem;
+    text-transform: uppercase;
+  }
+  
+  .recipe-layout {
+    display: grid;
+    grid-template-columns: .75fr 1.25fr;
+    gap: 90px;
+  }
+  
+  .recipe-layout h2 { font-size: 2rem; }
+  
+  .check-list,
+  .method-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .check-list li {
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  
+  .check-list input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--forest);
+  }
+  
+  .check-list input:checked + span {
+    color: var(--muted);
+    text-decoration: line-through;
+  }
+  
+  .method-list li {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 16px;
+    margin-bottom: 25px;
+  }
+  
+  .method-list li > span {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--forest);
+    color: white;
+    font-weight: 800;
+  }
+  
+  .nutrition-note {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 40px;
+    padding: 26px;
+    border-radius: 18px;
+    background: var(--mint);
+  }
+  
+  .nutrition-note > span { font-size: 2rem; }
+  
+  .nutrition-note h2 {
+    margin-bottom: 4px;
+    font-family: inherit;
+    font-size: 1.1rem;
+  }
+  
+  .nutrition-note p { margin-bottom: 0; }
+  
+  .back-link { margin-bottom: 90px; }
+  
+  
+  /* ============================================
+     GROCERY GUIDE PAGE
+     ============================================ */
+  
+  .grocery-hero {
+    background: linear-gradient(140deg, #edf2d5, #fbe7ca);
+  }
+  
+  .grocery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  
+  .grocery-card {
+    padding: 25px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  
+  .grocery-card > span { font-size: 2.5rem; }
+  
+  .grocery-card h2 {
+    min-height: 60px;
+    margin: 22px 0 15px;
+    font-size: 1.4rem;
+  }
+  
+  .grocery-card ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .grocery-card li { padding: 7px 0; }
+  .grocery-card input { accent-color: var(--forest); }
+  
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  
+  .tips-grid article {
+    padding: 27px;
+    border-radius: 18px;
+    background: white;
+  }
+  
+  .tips-grid strong { color: #849a71; }
+  .tips-grid h3 { margin-top: 22px; }
+  .tips-grid p {
+    margin-bottom: 0;
+    color: var(--muted);
+  }
+  
+  
+  /* ============================================
+     EATING PATTERNS PAGE
+     ============================================ */
+  
+  .pattern-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .pattern-grid article {
+    padding: 35px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  
+  .pattern-grid span { font-size: 2.5rem; }
+  
+  .pattern-grid h2 {
+    margin: 24px 0 12px;
+    font-size: 1.8rem;
+  }
+  
+  .pattern-grid p { color: var(--muted); }
+  
+  
+  /* ============================================
+     RESOURCES PAGE
+     ============================================ */
+  
+  .resource-list { display: grid; gap: 15px; }
+  
+  .resource-list > a {
+    display: grid;
+    grid-template-columns: 60px 1fr 30px;
+    align-items: center;
+    gap: 20px;
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    text-decoration: none;
+    transition: background .2s, transform .2s;
+  }
+  
+  .resource-list > a:hover {
+    transform: translateX(5px);
+    background: var(--mint);
+  }
+  
+  .resource-list > a > span { font-size: 2.4rem; }
+  .resource-list h2 {
+    margin-bottom: 5px;
+    font-size: 1.55rem;
+  }
+  
+  .resource-list p {
+    margin-bottom: 0;
+    color: var(--muted);
+  }
+  
+  .resource-list .eyebrow { color: var(--forest); }
+  
+  
+  /* ============================================
+     ASSISTANT PAGE
+     ============================================ */
+  
+  .assistant-hero {
+    background: linear-gradient(140deg, #dbe9cd, #fae6b9);
+  }
+  
+  .assistant-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  
+  .assistant-form-card,
+  .assistant-answer {
+    padding: clamp(28px, 5vw, 45px);
+    border-radius: var(--radius);
+  }
+  
+  .assistant-form-card {
+    border: 1px solid var(--line);
+  }
+  
+  .assistant-form-card h2,
+  .assistant-answer h2 { font-size: 1.8rem; }
+  
+  .assistant-form-card > p { color: var(--muted); }
+  
+  .assistant-form-card textarea {
+    min-height: 150px;
+    resize: vertical;
+  }
+  
+  .form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    margin-top: 15px;
+  }
+  
+  .form-footer small { color: var(--muted); }
+  
+  .assistant-answer {
+    min-height: 390px;
+    background: var(--forest);
+    color: white;
+  }
+  
+  .assistant-answer .eyebrow { color: #c9e0c6; }
+  .assistant-answer p { color: #e4eee9; }
+  
+  .assistant-avatar {
+    display: block;
+    margin-bottom: 30px;
+    font-size: 3rem;
+  }
+  
+  .answer-text { white-space: pre-wrap; }
+  
+  .flash {
+    margin: 15px 0;
+    padding: 12px 14px;
+    border-radius: 10px;
+  }
+  
+  .flash.error {
+    border: 1px solid #d69788;
+    background: #fff0ec;
+    color: #782e20;
+  }
+  
+  .compact-disclaimer { margin-top: -60px; }
+  
+  
+  /* ============================================
+     FOOTER
+     ============================================ */
+  
+  .site-footer {
+    padding: 65px 0 25px;
+    background: #123d31;
+    color: white;
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr .5fr 1fr;
+    gap: 65px;
+  }
+  
+  .footer-grid h2 {
+    margin-bottom: 15px;
+    font-family: inherit;
+    font-size: .85rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  
+  .footer-grid p { color: #c9dbd4; }
+  
+  .footer-grid > div:nth-child(2) a {
+    display: block;
+    margin-bottom: 8px;
+    color: #e6f0ec;
+    text-decoration: none;
+  }
+  
+  .footer-brand { margin-bottom: 14px; }
+  
+  .copyright {
+    width: min(1160px, calc(100% - 40px));
+    margin: 40px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,.15);
+    color: #9dbbb0;
+    font-size: .8rem;
+  }
+  
+  
+  /* ============================================
+     RESPONSIVE BREAKPOINTS
+     ============================================ */
+  
+  /* --- Tablet (≤ 900px) --- */
+  
+  @media (max-width: 900px) {
+    .menu-button { display: block; }
+  
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 78px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 15px 20px 25px;
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+  
+    .nav-links.is-open { display: flex; }
+    .nav-links > a:not(.button) { padding: 13px 4px; }
+  
+    .hero-grid,
+    .recipe-hero-grid,
+    .split-feature,
+    .nutrient-grid,
+    .assistant-layout {
+      grid-template-columns: 1fr;
+    }
+  
+    .hero-grid { padding-top: 85px; }
+  
+    .hero-copy {
+      text-align: center;
+    }
+  
+    .hero-copy .lede,
+    .hero-copy h1 {
+      margin-inline: auto;
+    }
+  
+    .hero-copy .button-row,
+    .trust-list {
+      justify-content: center;
+    }
+  
+    .hero-visual { min-height: 460px; }
+  
+    .step-grid,
+    .grocery-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .recipe-layout { gap: 45px; }
+  
+    .recipe-big-art {
+      min-height: 330px;
+    }
+  
+    .recipe-big-art span { font-size: 8rem; }
+  
+    .article-grid,
+    .recipe-grid,
+    .tips-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .footer-grid > div:last-child {
+      grid-column: span 2;
+    }
+  }
+  
+  
+  /* --- Mobile (≤ 640px) --- */
+  
+  @media (max-width: 640px) {
+    .shell {
+      width: min(100% - 28px, 1160px);
+    }
+  
+    .section { padding-block: 65px; }
+  
+    .hero-grid {
+      min-height: auto;
+      padding-block: 65px;
+    }
+  
+    .hero-visual { min-height: 340px; }
+  
+    .plate {
+      padding: 19px;
+      border-width: 12px;
+    }
+  
+    .plate > span { font-size: 3rem; }
+    .plate small { font-size: .62rem; }
+  
+    .float-card { display: none; }
+  
+    .section-heading,
+    .cta-inner {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 18px;
+    }
+  
+    .step-grid,
+    .article-grid,
+    .recipe-grid,
+    .grocery-grid,
+    .tips-grid,
+    .pattern-grid,
+    .recipe-layout,
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .step-card { min-height: 280px; }
+    .step-card .card-icon { margin-bottom: 28px; }
+  
+    .recipe-art { min-height: 190px; }
+  
+    .filter-bar {
+      grid-template-columns: 1fr;
+    }
+  
+    .filter-bar .button { width: 100%; }
+  
+    .nutrient-grid dl div {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+  
+    .page-hero { padding-block: 75px; }
+  
+    .recipe-facts {
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+  
+    .form-footer {
+      align-items: stretch;
+      flex-direction: column;
+    }
+  
+    .form-footer .button { width: 100%; }
+  
+    .footer-grid > div:last-child { grid-column: auto; }
+  
+    .resource-list > a {
+      grid-template-columns: 45px 1fr;
+    }
+  
+    .resource-list > a b { display: none; }
+    .resource-list > a > span { font-size: 2rem; }
+  }
+  
+  
+  /* ============================================
+     ACCESSIBILITY: REDUCED MOTION
+     ============================================ */
+  
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      scroll-behavior: auto !important;
+      transition: none !important;
+    }
+  }

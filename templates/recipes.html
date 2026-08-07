@@ -1,0 +1,130 @@
+{# ============================================
+  TEMPLATE: Recipes Listing Page
+  ============================================ #}
+
+{% extends "base.html" %}
+
+{% block title %}Simple Recipes | HealthyPlate{% endblock %}
+
+{% block content %}
+
+{# ============================================
+  PAGE HERO / INTRODUCTION
+  ============================================ #}
+
+<section class="page-hero compact">
+ <div class="shell narrow">
+   <p class="eyebrow">Recipe collection</p>
+   <h1>Simple food you'll want to make again.</h1>
+   <p class="lede">
+     Flexible recipes with familiar ingredients and a clear role for every 
+     part of the plate.
+   </p>
+ </div>
+</section>
+
+
+{# ============================================
+  RECIPE LISTING WITH FILTERS
+  ============================================ #}
+
+<section class="section shell">
+ 
+ {# --- Filter Bar --- #}
+ <form class="filter-bar" method="get">
+   
+   {# Search input #}
+   <label>
+     <span>Search recipes or ingredients</span>
+     <input type="search" name="q" value="{{ query }}" 
+            placeholder="Try chicken, beans, or quick">
+   </label>
+   
+   {# Category dropdown #}
+   <label>
+     <span>Category</span>
+     <select name="category">
+       <option value="">All categories</option>
+       {% for category in recipe_categories %}
+         <option value="{{ category }}" 
+                 {% if category == selected_category %}selected{% endif %}>
+           {{ category }}
+         </option>
+       {% endfor %}
+     </select>
+   </label>
+   
+   {# Submit button #}
+   <button class="button" type="submit">Find recipes</button>
+   
+ </form>
+ 
+ {# --- Results Count --- #}
+ <p class="results-count">
+   {{ recipes|length }} recipe{% if recipes|length != 1 %}s{% endif %} found
+   {% if query %} for "{{ query }}"{% endif %}.
+ </p>
+ 
+ {# --- Recipe Grid --- #}
+ {% if recipes %}
+ 
+ <div class="recipe-grid">
+   
+   {% for recipe in recipes %}
+   
+   <article class="recipe-card">
+     
+     {# Recipe art with alternating colors #}
+     <a class="recipe-art art-{{ (loop.index0 % 3) + 1 }}" 
+        href="{{ url_for('recipe_detail', slug=recipe.slug) }}">
+       <span>{{ recipe.emoji }}</span>
+     </a>
+     
+     <div class="recipe-body">
+       
+       {# Meta info #}
+       <div class="meta">
+         <span>{{ recipe.category }}</span>
+         <span>{{ recipe.prep_time }}</span>
+       </div>
+       
+       {# Title #}
+       <h2>
+         <a href="{{ url_for('recipe_detail', slug=recipe.slug) }}">
+           {{ recipe.name }}
+         </a>
+       </h2>
+       
+       {# Description #}
+       <p>{{ recipe.description }}</p>
+       
+       {# Tags #}
+       <div class="tag-row">
+         {% for tag in recipe.tags %}
+           <span>{{ tag }}</span>
+         {% endfor %}
+       </div>
+       
+     </div>
+     
+   </article>
+   
+   {% endfor %}
+   
+ </div>
+ 
+ {# --- Empty State --- #}
+ {% else %}
+ 
+ <div class="empty-state">
+   <span>🥕</span>
+   <h2>No recipes matched that search.</h2>
+   <p>Try a broader ingredient or clear the category filter.</p>
+   <a class="button" href="{{ url_for('recipes') }}">Show all recipes</a>
+ </div>
+ 
+ {% endif %}
+ 
+</section>
+
+{% endblock %}

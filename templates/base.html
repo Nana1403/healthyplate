@@ -1,0 +1,110 @@
+{# ============================================
+  BASE TEMPLATE: HealthyPlate
+  ============================================ #}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+ {# --- Meta & Title --- #}
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="description" content="HealthyPlate makes balanced eating approachable with beginner-friendly guides and recipes.">
+ <title>{% block title %}HealthyPlate{% endblock %}</title>
+ 
+ {# --- Fonts --- #}
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+ 
+ {# --- Styles & Scripts --- #}
+ <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+ <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+
+<body>
+
+ {# ============================================
+    SKIP LINK (Accessibility)
+    ============================================ #}
+ 
+ <a class="skip-link" href="#main-content">Skip to content</a>
+
+
+ {# ============================================
+    SITE HEADER / NAVIGATION
+    ============================================ #}
+
+ <header class="site-header">
+   <nav class="nav shell" aria-label="Main navigation">
+     
+     {# --- Brand --- #}
+     <a class="brand" href="{{ url_for('homepage') }}" aria-label="HealthyPlate home">
+       <span class="brand-mark" aria-hidden="true">🥗</span> 
+       HealthyPlate
+     </a>
+     
+     {# --- Mobile Menu Button --- #}
+     <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links">
+       Menu
+     </button>
+     
+     {# --- Navigation Links --- #}
+     <div class="nav-links" id="nav-links">
+       <a href="{{ url_for('learn') }}">Learn</a>
+       <a href="{{ url_for('recipes') }}">Recipes</a>
+       <a href="{{ url_for('grocery_guide') }}">Grocery guide</a>
+       <a href="{{ url_for('resources') }}">Resources</a>
+       <a class="button button-small" href="{{ url_for('assistant') }}">Ask the assistant</a>
+     </div>
+     
+   </nav>
+ </header>
+
+
+ {# ============================================
+    MAIN CONTENT (Child templates go here)
+    ============================================ #}
+
+ <main id="main-content">
+   {% block content %}{% endblock %}
+ </main>
+
+
+ {# ============================================
+    SITE FOOTER
+    ============================================ #}
+
+ <footer class="site-footer">
+   <div class="shell footer-grid">
+     
+     {# --- Footer Brand --- #}
+     <div>
+       <a class="brand footer-brand" href="{{ url_for('homepage') }}">
+         <span aria-hidden="true">🥗</span> HealthyPlate
+       </a>
+       <p>Learn better. Eat balanced. Start simple.</p>
+     </div>
+     
+     {# --- Explore Links --- #}
+     <div>
+       <h2>Explore</h2>
+       <a href="{{ url_for('learn') }}">Healthy Eating 101</a>
+       <a href="{{ url_for('recipes') }}">Recipes</a>
+       <a href="{{ url_for('grocery_guide') }}">Budget tips</a>
+     </div>
+     
+     {# --- Medical Disclaimer --- #}
+     <div>
+       <h2>A gentle reminder</h2>
+       <p>HealthyPlate provides general education, not medical advice. For personalized guidance, speak with a qualified healthcare professional.</p>
+     </div>
+     
+   </div>
+   
+   {# --- Copyright --- #}
+   <p class="copyright">© 2026 HealthyPlate</p>
+ </footer>
+
+</body>
+</html>

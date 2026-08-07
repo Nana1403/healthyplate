@@ -1,0 +1,116 @@
+{# ============================================
+    TEMPLATE: Grocery & Budget Guide Page
+    ============================================ #}
+ 
+ {% extends "base.html" %}
+ 
+ {% block title %}Grocery & Budget Guide | HealthyPlate{% endblock %}
+ 
+ {% block content %}
+ 
+ {# ============================================
+    PAGE HERO / INTRODUCTION
+    ============================================ #}
+ 
+ <section class="page-hero grocery-hero">
+   <div class="shell narrow">
+     <p class="eyebrow">Grocery guide</p>
+     <h1>A practical list for flexible meals.</h1>
+     <p class="lede">
+       Choose what fits your household. You do not need every item—start with 
+       foods you already like and can use more than once.
+     </p>
+   </div>
+ </section>
+ 
+ 
+ {# ============================================
+    GROCERY CATEGORY GRID
+    ============================================ #}
+ 
+ <section class="section shell">
+   <div class="grocery-grid">
+     
+     {# Loop through grocery groups from backend #}
+     {% for group in grocery_groups %}
+     
+     <article class="grocery-card">
+       <span>{{ group.icon }}</span>
+       <h2>{{ group.name }}</h2>
+       <ul>
+         {% for item in group['items'] %}
+         <li>
+           <label>
+             <input type="checkbox"> {{ item }}
+           </label>
+         </li>
+         {% endfor %}
+       </ul>
+     </article>
+     
+     {% endfor %}
+     
+   </div>
+ </section>
+ 
+ 
+ {# ============================================
+    BUDGET TIPS SECTION
+    ============================================ #}
+ 
+ <section class="section tint-section">
+   <div class="shell">
+     
+     {# --- Section Heading --- #}
+     <div class="section-heading">
+       <div>
+         <p class="eyebrow">Stretch your budget</p>
+         <h2>Six small shopping habits</h2>
+       </div>
+     </div>
+     
+     {# --- Tips Grid --- #}
+     <div class="tips-grid">
+       
+       <article>
+         <strong>01</strong>
+         <h3>Shop your kitchen first</h3>
+         <p>Build meals around what needs to be used.</p>
+       </article>
+       
+       <article>
+         <strong>02</strong>
+         <h3>Plan flexible meals</h3>
+         <p>Bowls, soups, tacos, and stir-fries welcome substitutions.</p>
+       </article>
+       
+       <article>
+         <strong>03</strong>
+         <h3>Compare unit prices</h3>
+         <p>The biggest package is not always the best value.</p>
+       </article>
+       
+       <article>
+         <strong>04</strong>
+         <h3>Try store brands</h3>
+         <p>Basics often cost less with similar ingredients.</p>
+       </article>
+       
+       <article>
+         <strong>05</strong>
+         <h3>Use frozen produce</h3>
+         <p>Take only what you need and reduce food waste.</p>
+       </article>
+       
+       <article>
+         <strong>06</strong>
+         <h3>Choose versatile staples</h3>
+         <p>Eggs, beans, oats, rice, and potatoes work across meals.</p>
+       </article>
+       
+     </div>
+     
+   </div>
+ </section>
+ 
+ {% endblock %}

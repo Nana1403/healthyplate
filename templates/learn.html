@@ -1,0 +1,113 @@
+{# ============================================
+  TEMPLATE: Healthy Eating 101 Page
+  ============================================ #}
+
+{% extends "base.html" %}
+
+{% block title %}Healthy Eating 101 | HealthyPlate{% endblock %}
+
+{% block content %}
+
+{# ============================================
+  PAGE HERO / INTRODUCTION
+  ============================================ #}
+
+<section class="page-hero">
+ <div class="shell narrow">
+   <p class="eyebrow">Healthy Eating 101</p>
+   <h1>Learn the basics without the overwhelm.</h1>
+   <p class="lede">
+     Food does more than one job. These short guides explain the big ideas 
+     in plain language.
+   </p>
+ </div>
+</section>
+
+
+{# ============================================
+  ARTICLES GRID
+  ============================================ #}
+
+<section class="section shell">
+ <div class="article-grid">
+   
+   {# Loop through articles from backend #}
+   {% for article in articles %}
+   
+   <article class="article-card">
+     <span class="article-icon">{{ article.icon }}</span>
+     <p class="eyebrow">{{ article.category }}</p>
+     <h2>{{ article.title }}</h2>
+     <p>{{ article.summary }}</p>
+   </article>
+   
+   {% endfor %}
+   
+ </div>
+</section>
+
+
+{# ============================================
+  NUTRIENT BASICS (Split Layout)
+  ============================================ #}
+
+<section class="section tint-section">
+ <div class="shell nutrient-grid">
+   
+   {# --- Left: Intro --- #}
+   <div>
+     <p class="eyebrow">Nutrition basics</p>
+     <h2>Different nutrients, different roles</h2>
+     <p>
+       You do not need to track every nutrient to eat well. Variety across 
+       meals helps cover your bases.
+     </p>
+   </div>
+   
+   {# --- Right: Nutrient Definitions --- #}
+   <dl>
+     
+     <div>
+       <dt>Protein</dt>
+       <dd>Supports growth, repair, and many everyday body processes.</dd>
+     </div>
+     
+     <div>
+       <dt>Carbohydrates</dt>
+       <dd>The body's preferred source of energy, found in fruit, grains, beans, and more.</dd>
+     </div>
+     
+     <div>
+       <dt>Fats</dt>
+       <dd>Support cells, hormones, and absorption of certain vitamins.</dd>
+     </div>
+     
+     <div>
+       <dt>Fiber</dt>
+       <dd>Supports digestion and is naturally present in many plant foods.</dd>
+     </div>
+     
+   </dl>
+   
+ </div>
+</section>
+
+
+{# ============================================
+  MEDICAL DISCLAIMER
+  ============================================ #}
+
+<section class="section shell disclaimer">
+ <span>⚕️</span>
+ <div>
+   <h2>Nutrition is personal</h2>
+   <p>
+     Needs vary with age, activity, allergies, medical conditions, pregnancy, 
+     medications, and other factors. HealthyPlate offers general information—not 
+     diagnosis or treatment. A doctor or registered dietitian can help with 
+     personal needs.
+   </p>
+ </div>
+</section>
+
+{% endblock %}

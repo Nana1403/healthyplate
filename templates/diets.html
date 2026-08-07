@@ -1,0 +1,93 @@
+{# ============================================
+    TEMPLATE: Eating Patterns Page
+    ============================================ #}
+ 
+ {% extends "base.html" %}
+ 
+ {% block title %}Eating Patterns | HealthyPlate{% endblock %}
+ 
+ {% block content %}
+ 
+ {# ============================================
+    PAGE HERO / INTRODUCTION
+    ============================================ #}
+ 
+ <section class="page-hero compact">
+   <div class="shell narrow">
+     <p class="eyebrow">Flexible eating patterns</p>
+     <h1>Patterns are tools, not tests.</h1>
+     <p class="lede">
+       There is no single perfect way to eat. These patterns can offer ideas, 
+       but personal needs and cultural food traditions matter.
+     </p>
+   </div>
+ </section>
+ 
+ 
+ {# ============================================
+    PATTERN GRID
+    ============================================ #}
+ 
+ <section class="section shell">
+   <div class="pattern-grid">
+     
+     {# ---- Pattern 1: Mediterranean-style ---- #}
+     <article>
+       <span>🌊</span>
+       <h2>Mediterranean-style</h2>
+       <p>
+         Often emphasizes vegetables, fruit, legumes, whole grains, nuts, olive oil, 
+         fish, and shared meals. It can be adapted to many cuisines.
+       </p>
+     </article>
+     
+     {# ---- Pattern 2: DASH-style ---- #}
+     <article>
+       <span>❤️</span>
+       <h2>DASH-style</h2>
+       <p>
+         Centers fruit, vegetables, whole grains, beans, lean proteins, and lower-sodium 
+         choices. Medical goals should be discussed with a clinician.
+       </p>
+     </article>
+     
+     {# ---- Pattern 3: Plant-forward ---- #}
+     <article>
+       <span>🌱</span>
+       <h2>Plant-forward</h2>
+       <p>
+         Adds more beans, lentils, tofu, grains, nuts, seeds, fruit, and vegetables 
+         without requiring one strict definition.
+       </p>
+     </article>
+     
+     {# ---- Pattern 4: Your Household Pattern ---- #}
+     <article>
+       <span>🏡</span>
+       <h2>Your household pattern</h2>
+       <p>
+         The most useful approach respects your culture, schedule, access, budget, 
+         preferences, and health needs.
+       </p>
+     </article>
+     
+   </div>
+ </section>
+ 
+ 
+ {# ============================================
+    MEDICAL DISCLAIMER
+    ============================================ #}
+ 
+ <aside class="shell disclaimer">
+   <span>⚕️</span>
+   <div>
+     <h2>Before making a major change</h2>
+     <p>
+       Talk with a doctor or registered dietitian if you manage a health condition, 
+       take medication, are pregnant, have food allergies, or need individualized support.
+     </p>
+   </div>
+ </aside>
+ 
+ {% endblock %}

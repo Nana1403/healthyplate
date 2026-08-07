@@ -1,0 +1,79 @@
+{# ============================================
+  TEMPLATE: Trusted Resources Page
+  ============================================ #}
+
+{% extends "base.html" %}
+
+{% block title %}Trusted Resources | HealthyPlate{% endblock %}
+
+{% block content %}
+
+{# ============================================
+  PAGE HERO / INTRODUCTION
+  ============================================ #}
+
+<section class="page-hero compact">
+ <div class="shell narrow">
+   <p class="eyebrow">Keep learning</p>
+   <h1>Trusted places to explore next.</h1>
+   <p class="lede">
+     Start with one resource and one practical idea. You do not need to learn 
+     everything at once.
+   </p>
+ </div>
+</section>
+
+
+{# ============================================
+  RESOURCE LINKS LIST
+  ============================================ #}
+
+<section class="section shell resource-list">
+ 
+ {# ---- Resource 1: MyPlate (USDA) ---- #}
+ <a href="https://www.myplate.gov/" target="_blank" rel="noopener noreferrer">
+   <span>🇺🇸</span>
+   <div>
+     <p class="eyebrow">U.S. Department of Agriculture</p>
+     <h2>MyPlate</h2>
+     <p>Food-group guidance, recipes, budget tips, and tools for building balanced meals.</p>
+   </div>
+   <b aria-hidden="true">↗</b>
+ </a>
+ 
+ {# ---- Resource 2: CDC Nutrition ---- #}
+ <a href="https://www.cdc.gov/nutrition/" target="_blank" rel="noopener noreferrer">
+   <span>📘</span>
+   <div>
+     <p class="eyebrow">Centers for Disease Control and Prevention</p>
+     <h2>Nutrition</h2>
+     <p>Plain-language information about nutrition and healthy food environments.</p>
+   </div>
+   <b aria-hidden="true">↗</b>
+ </a>
+ 
+ {# ---- Resource 3: Harvard Nutrition Source ---- #}
+ <a href="https://nutritionsource.hsph.harvard.edu/" target="_blank" rel="noopener noreferrer">
+   <span>🎓</span>
+   <div>
+     <p class="eyebrow">Harvard T.H. Chan School of Public Health</p>
+     <h2>The Nutrition Source</h2>
+     <p>Detailed educational guides to foods, nutrients, and healthy eating patterns.</p>
+   </div>
+   <b aria-hidden="true">↗</b>
+ </a>
+ 
+ {# ---- Resource 4: NHS Eat Well ---- #}
+ <a href="https://www.nhs.uk/live-well/eat-well/" target="_blank" rel="noopener noreferrer">
+   <span>🌍</span>
+   <div>
+     <p class="eyebrow">United Kingdom National Health Service</p>
+     <h2>Eat well</h2>
+     <p>Accessible guidance about food groups, labels, digestion, and eating well.</p>
+   </div>
+   <b aria-hidden="true">↗</b>
+ </a>
+ 
+</section>
+
+{% endblock %}
